@@ -1,0 +1,67 @@
+﻿<!--Added file-->
+@model IEnumerable<VideoStore.Services.MessageTypes.Review>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    Average Rating: @ViewBag.AverageRating / 5<br />
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reviewer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    if (item.MediaId == ViewBag.MediaId)
+    {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reviewer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+        </td>
+    </tr>
+    }
+}
+
+</table>
